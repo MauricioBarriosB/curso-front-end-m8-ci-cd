@@ -2,7 +2,7 @@
 
 URL Github pública acceso archivos fuente Proyecto TypeScript React JS:
 
-https://github.com/MauricioBarriosB/chttps://github.com/MauricioBarriosB/curso-front-end-m8-ci-cd
+https://github.com/MauricioBarriosB/curso-front-end-m8-ci-cd
 
 ## 1 Integración de Docker en el Proyecto:
 

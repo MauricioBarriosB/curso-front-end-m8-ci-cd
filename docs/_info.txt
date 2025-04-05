@@ -1,0 +1,109 @@
+Proyecto DevOps GitHub
+
+https://github.com/bguzmanm/devops-feg2
+
+00:46 Docker, 01:01 Testing, 01:52 GitHub Actions
+
+---------------------------------------------------------------------------------
+
+cd d:\LOCALHOST\www
+npm create vite@latest curso-front-end-m8-ci-cd --template react
+cd curso-front-end-m8-ci-cd
+code .
+npm install
+npm run dev
+
+---------------------------------------------------------------------------------
+
+git init
+git config --global init.defaultBranch main (cambio solo para GitHub, no necesario para GitLab)
+(crear repositorio remoto en GitHub curso-front-end-m8-ci-cd) 
+git remote add origin https://github.com/MauricioBarriosB/curso-front-end-m8-ci-cd.git
+git remote -v
+git branch -M main (posicionar rama)
+git add -A (agregar cambios)
+git commit -m 'Primer commit proyecto dev ops' (commit cambios)
+git push -u origin main (subir cambios)
+
+---------------------------------------------------------------------------------
+
+git checkout -b feature/actualizacion-componentes (rama feature)
+(hacer cambios)
+git status (ver cambios)
+git add . (agregar cambios al stage)
+git commit -m 'Actualización App.jsx' (commit cambios)
+git log
+git push origin feature/actualizacion-componentes (subir la ramama feature junto con los cambios)
+(hacer el pull request and merge desde GitHub)
+git checkout main (cambiar a rama main)
+git pull (bajar los cambios rama main)
+
+git merge main -m 'feature merge con rama main' (desde rama feature traer los cambios de main)
+
+---------------------------------------------------------------------------------
+
+docker build -t curso-front-end-m8-ci-cd .
+docker run -p 5173:5173 curso-front-end-m8-ci-cd
+docker stop confident_brown
+
+---------------------------------------------------------------------------------
+
+npm install --save-dev jest @testing-library/react @testing-library/jest-dom
+npm install --save-dev @babel/preset-env @babel/preset-react babel-jest
+npm install -D jest-environment-jsdom
+
+---------------------------------------------------------------------------------
+
+.github/workflows/ci.yml :
+
+name: Vite Hospital CI/CD Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el código
+        uses: actions/checkout@v2
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Ejecutar pruebas unitarias
+        run: npm test
+
+---------------------------------------------------------------------------------
+
+git add -A (rama main)
+git commit -m 'Configuración CI/CD pipeline y pruebas unitarias iniciales'
+git push (inicia las GitHub Actions - configuradas para push )
+
+git branch develop (trabajar en rama develop)
+git checkout develop
+git push -u origin develop
+git merge main -m 'develop' (desde rama develop traer los cambios de main)
+
+---------------------------------------------------------------------------------
+
+Pruebas Unitarias con Jest TS:
+
+npm install --save-dev @testing-library/react @testing-library/jest-dom @testing-library/dom @testing-library/user-event
+npm install --save-dev jest jest-environment-jsdom ts-jest @types/jest
+
+https://www.youtube.com/watch?v=jlZBrcnoP9g&t=6s
+https://dev.to/spacesnaill/react-and-typescript-testing-mocking-functions-with-jest-1pn8
+https://robertmarshall.dev/blog/react-component-props-passed-to-child-jest-unit-test
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Dependecias Priyecto Inicial
+
+npm install jwt-decode 
+npm install qs
+npm install axios
+npm install dompurify
+npm install react-router-dom
+npm install crypto-js 
+npm install prop-types
